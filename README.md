@@ -46,7 +46,7 @@ Follow these steps to run the project locally.
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/vpsbazzar.git
+https://github.com/ashuhryana/Vps-Hosting-Website.git
 ```
 
 Or download ZIP and extract.
