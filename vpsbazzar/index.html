@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPSBazzar | Ultra-Fast NVMe Cloud Infrastructure</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        bazaar: {
+                            red: '#C0392B',
+                            navy: '#1A365D',
+                            dark: '#050505'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+          --bazaar-red: #C0392B;
+          --bazaar-navy: #1A365D;
+        }
+
+        body { 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          overflow-x: hidden;
+          transition: background-color 0.4s ease, color 0.4s ease;
+        }
+        
+        @keyframes reveal {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse-glow {
+          0%, 100% { box-shadow: 0 0 20px rgba(192, 57, 43, 0.1); }
+          50% { box-shadow: 0 0 40px rgba(192, 57, 43, 0.25); }
+        }
+
+        @keyframes scanline {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(100%); }
+        }
+
+        .animate-reveal { animation: reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .pulse-glow { animation: pulse-glow 4s infinite ease-in-out; }
+        
+        .glass-nav {
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+        }
+
+        .bento-card {
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          border-width: 1px;
+        }
+
+        .bento-card:hover {
+          border-color: rgba(192, 57, 43, 0.4);
+          transform: translateY(-6px);
+          box-shadow: 0 20px 40px -10px rgba(192, 57, 43, 0.1);
+        }
+
+        .hero-gradient {
+          background: radial-gradient(circle at 50% -20%, rgba(192, 57, 43, 0.12) 0%, transparent 60%);
+        }
+
+        .dark .hero-gradient {
+          background: radial-gradient(circle at 50% -20%, rgba(192, 57, 43, 0.2) 0%, transparent 70%),
+                      radial-gradient(circle at 0% 100%, rgba(26, 54, 93, 0.15) 0%, transparent 50%);
+        }
+
+        .text-glow {
+          text-shadow: 0 0 30px rgba(192, 57, 43, 0.2);
+        }
+
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .dark ::-webkit-scrollbar-thumb { background: #1e293b; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--bazaar-red); }
+
+        .selection-red::selection {
+          background-color: var(--bazaar-red);
+          color: white;
+        }
+
+        .terminal-overlay {
+          position: relative;
+          overflow: hidden;
+        }
+        .terminal-overlay::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(255,255,255,0.02) 50%, rgba(0,0,0,0) 100%);
+          animation: scanline 8s linear infinite;
+          pointer-events: none;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="selection-red bg-slate-50 text-slate-900 dark:bg-[#030303] dark:text-slate-200 antialiased">
+    <div id="root"></div>
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
